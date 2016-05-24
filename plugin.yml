@@ -1,0 +1,15 @@
+name: LiveXYZ
+main: LiveXYZ\Main
+author: HarryPotter98
+description: Show real-time player coordinates
+version: 0.3.0-alpha
+api: 2.0.0
+commands:
+  xyz:
+    description: Show your coordinates real-time as you move
+    permission: livexyz
+    usage: /xyz
+permissions:
+  livexyz:
+    default: true
+    description: "Allows use of LiveXYZ"
