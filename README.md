@@ -1,5 +1,17 @@
 # RealTimeXYZ
-Plugin for PocketMine-MP - shows your coordinates real-time as you move
+Plugin for MCPE servers - shows your coordinates real-time as you move
+
+## Installation
+NOTE: This plugin has been developed and is only tested with Genisys (https://github.com/iTXTech/Genisys) and has not been tested on any other server software. If you find compatibility issues, please use the issue tracker to report them.
+I don't currently provide downloads for PHAR files for this plugin (TO-DO)
+1. Download the repository as a ZIP to your computer.
+2. Go to pmt.mcpe.me and run the downloaded ZIP through the converter.
+3. Save the generated PHAR to your `<server_folder>/plugins` folder.
+4. Start your server
+
+## Usage
+As a player, type `/xyz` into the chat. (You can't currently do this for somebody else or from the console).
+Your coordinates will be shown above the hotbar.
 
 
 ```
