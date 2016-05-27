@@ -3,10 +3,10 @@
 - Plugin for MCPE servers
 - Description: shows your coordinates real-time as you move
 - Dependency plugins: none
-- Current version: 0.3.0-alpha
+- Current version: 0.4.0-alpha
 
 ## Installation
-NOTE: This plugin has been developed and is only tested with Genisys (https://github.com/iTXTech/Genisys) and has not been tested on any other server software. If you find compatibility issues, please use the issue tracker to report them.
+NOTE: This plugin has been developed and is only tested with Genisys (https://github.com/iTXTech/Genisys) and has not been tested on any other server software. If you find compatibility issues, please use the [issue tracker](https://github.com/dktapps/LiveXYZ/issues) to report them.
 
 1. Go to the [LiveXYZ Release Page](https://github.com/dktapps/LiveXYZ/releases) and download a PHAR file from there.
 2. Copy the downloaded PHAR to the `plugins` folder in your server folder.

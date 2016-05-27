@@ -30,15 +30,38 @@ use pocketmine\Player;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 
-use pocketmine\scheduler\Task;
+//Compatibility with PocketMine-MP
+use LiveXYZ\Tasks\Callback;
+
+// Otherwise use CallbackTask for distros which support it
+use pocketmine\scheduler\CallbackTask;
+
 
 class Main extends PluginBase implements Listener{
 	private $players;
+	private $refreshRate = 1;
 	
 	public function onEnable(){
+		if(!is_dir($this->getDataFolder())){
+            mkdir($this->getDataFolder());
+        }
+		if(!file_exists($this->getDataFolder() . "config.yml")){
+			$this->saveDefaultConfig();
+		}
+		
+		$this->refreshRate = intval($this->getConfig()->get("refreshRate"));
+		if($this->refreshRate < 1){
+			$this->getServer()->getLogger()->warning("[LiveXYZ] Refresh rate property in config.yml is less than 1. Resetting to 1");
+			$this->getConfig()->set("refreshRate",1);
+			$this->getConfig()->save();
+			$this->refreshRate = 1;
+		}
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		$this->players = array(false);
-		
+	}
+	
+	public function onDisable(){
+		unset($this->players);
 	}
 	
 	public function onCommand(CommandSender $sender, Command $command, $label, array $args){
@@ -57,17 +80,6 @@ class Main extends PluginBase implements Listener{
 				$this->players[$sender->getName()]["padding"] = 0;
 				$this->players[$sender->getName()]["shownTip"] = false;
 			}
-			/*
-			if(isset($args[0])){
-				if(is_numeric($args[0])){
-					$this->players[$sender->getName()]["padding"] = intval($args[0]);
-					$sender->sendMessage("§aDialog top padding set to ".intval($args[0]));
-					return true;
-				}else{
-					$sender->sendMessage("§cPadding number must be numeric");
-					return true;
-				}
-			}*/
 			
 			//Quick hack to fix undefined property errors
 			if(!isset($this->players[$sender->getName()]["xyz"])){
@@ -76,10 +88,6 @@ class Main extends PluginBase implements Listener{
 			$this->players[$sender->getName()]["xyz"] = !$this->players[$sender->getName()]["xyz"];	
 			$sender->sendMessage("§aLiveXYZ is now ".($this->players[$sender->getName()]["xyz"]? "on!": "off."));
 			if($this->players[$sender->getName()]["xyz"]){
-				/*if(!$this->players[$sender->getName()]["shownTip"]){
-					$sender->sendMessage("§aPro tip: if the dialog is too high/low, say /xyz <number> to change the top padding.");
-					$this->players[$sender->getName()]["shownTip"] = true;
-				}*/
 				$this->showXYZ($sender);
 			}
 			return true;
@@ -91,8 +99,8 @@ class Main extends PluginBase implements Listener{
 	}
 	
 	public function bearing($deg) {
-	//https://github.com/Muirfield/pocketmine-plugins/blob/master/GrabBag/src/aliuly/common/ExpandVars.php
-    // Determine bearing
+		//https://github.com/Muirfield/pocketmine-plugins/blob/master/GrabBag/src/aliuly/common/ExpandVars.php
+		// Determine bearing in degrees
 		if (22.5 <= $deg && $deg < 67.5) {
 			return "Northwest";
 		}elseif (67.5 <= $deg && $deg < 112.5) {
@@ -120,54 +128,13 @@ class Main extends PluginBase implements Listener{
 		$xyz = "Position: §a(".number_format($player->getX(),1,".",",").", ".number_format($player->getY(),1,".",",").", ".number_format($player->getZ(),1,".",",").")";
 		$world = "World: §a".$player->getLevel()->getName();
 		$direction = "Facing §a".$this->bearing($player->getYaw())." (".$player->getYaw().")";
-		
-		//$strLength = (floor(max(strlen($xyz), strlen($world), strlen($direction))/2))*2;
-		
-		//$this->padString($xyz,$strLength);
-		//$this->padString($world,$strLength);
-		//$this->padString($direction,$strLength);
-		
-		//Use sendPopup, sendTip currently broken
 		$player->sendPopup(str_repeat("\n", $this->players[$player->getName()]["padding"]).$xyz."§f\n".$world."§f\n".$direction);
-		
-		$this->getServer()->getScheduler()->scheduleDelayedTask(new Callback([$this, "showXYZ"], [$player]), 1);
-	}
-	
-	public function padString(&$string, $finalLength){
-		
-		/* Let's say that finalLength is 6 and the input is "yea"
-		 * the result will be " yea  "
-		 * If the input is "yeah"
-		 * the result will be " yeah "
-		 */
-		while(strlen($string) < $finalLength){
-			if(strlen($string) < $finalLength){
-				$string = " ".$string;
-			}
-			if(strlen($string) < $finalLength){
-				$string = $string." ";
-			}
-			//$string = " ".$string." ";
+		try{
+			$this->getServer()->getScheduler()->scheduleDelayedTask(new CallbackTask([$this, "showXYZ"], [$player]), $this->refreshRate);
+		}catch(\Exception $e){
+			//Maintain functionality on PocketMine-MP
+			$this->getServer()->getScheduler()->scheduleDelayedTask(new Callback([$this, "showXYZ"], [$player]), $this->refreshRate);
 		}
-		/*if(strlen($string) !== $finalLength){
-			$string = $string." ";
-		}*/
-	}
-}
-
-class Callback extends Task{
-
-	public function __construct(callable $callable, array $args = array()){
-		$this->callable = $callable;
-		$this->args = $args;
-		$this->args[] = $this;
-	}
-
-	public function getCallable(){
-		return $this->callable;
-	}
-
-	public function onRun($currentTicks){
-		call_user_func_array($this->callable, $this->args);
+		
 	}
 }
