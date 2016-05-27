@@ -1,5 +1,12 @@
 # LiveXYZ
-Plugin for MCPE servers - shows your coordinates real-time as you move
+
+Plugin for MCPE servers
+
+Description: shows your coordinates real-time as you move
+
+Dependency plugins: none
+
+Current version: 0.3.0-alpha
 
 ## Installation
 NOTE: This plugin has been developed and is only tested with Genisys (https://github.com/iTXTech/Genisys) and has not been tested on any other server software. If you find compatibility issues, please use the issue tracker to report them.
@@ -15,6 +22,9 @@ I don't currently provide downloads for PHAR files for this plugin _(TO-DO)_
   As a player, type `/xyz` into the chat. (You can't currently do this for somebody else or from the console). Your coordinates will be shown above the hotbar.
 - To turn LiveXYZ off:
   Simply type `/xyz` again to toggle the display.
+
+## Permission nodes:
+- `livexyz`: TRUE by default. Allows players with this permission to use LiveXYZ
 
 ### Copyright and licensing information
 ```
