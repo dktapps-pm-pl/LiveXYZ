@@ -13,7 +13,7 @@ NOTE: This plugin has been developed and is only tested with Genisys (https://gi
 I don't currently provide downloads for PHAR files for this plugin _(TO-DO)_
 
 1. Download the repository as a ZIP to your computer.
-2. Go to pmt.mcpe.me and run the downloaded ZIP through the converter.
+2. Go to [pmt.mcpe.me](pmt.mcpe.me) and run the downloaded ZIP through the converter.
 3. Save the generated PHAR to your `<server_folder>/plugins` folder.
 4. Start your server
 
