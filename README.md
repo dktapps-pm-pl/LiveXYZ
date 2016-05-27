@@ -7,12 +7,10 @@
 
 ## Installation
 NOTE: This plugin has been developed and is only tested with Genisys (https://github.com/iTXTech/Genisys) and has not been tested on any other server software. If you find compatibility issues, please use the issue tracker to report them.
-I don't currently provide downloads for PHAR files for this plugin _(TO-DO)_
 
-1. Download the repository as a ZIP to your computer.
-2. Go to [pmt.mcpe.me](pmt.mcpe.me) and run the downloaded ZIP through the converter.
-3. Save the generated PHAR to your `<server_folder>/plugins` folder.
-4. Start your server
+1. Go to the [LiveXYZ Release Page](https://github.com/dktapps/LiveXYZ/releases) and download a PHAR file from there.
+2. Copy the downloaded PHAR to the `plugins` folder in your server folder.
+3. If you're making a fresh installation, you can simply reload the server. If you're updating the plugin, you'll need to shutdown and restart the server for changes to be detected.
 
 ## Usage
 - To turn LiveXYZ on:
