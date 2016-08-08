@@ -61,7 +61,7 @@ class LiveXYZ extends PluginBase implements Listener{
 	}
 	
 	public function onCommand(CommandSender $sender, Command $command, $aliasUsed = "", array $args){
-		if(strtolower($command->getName()) === "xyz"){
+		if($command->getName() === "xyz"){
 			if(!$sender instanceof Player){
 				$sender->sendMessage(TextFormat::RED . "You can't use this command in the terminal");
 				return true;
