@@ -53,13 +53,7 @@ class LiveXYZ extends PluginBase implements Listener{
 		
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
-	
-	public function onDisable(){
-		//Don't need to cancel running tasks, that's done automatically by the server on plugin disable
-		//All that has to be done here is to free the command handlers
-		unset($this->tasks);
-	}
-	
+
 	public function onCommand(CommandSender $sender, Command $command, $aliasUsed = "", array $args){
 		if($command->getName() === "xyz"){
 			if(!$sender instanceof Player){
