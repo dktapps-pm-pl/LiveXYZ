@@ -1,7 +1,7 @@
 ---
 
-## Refresh rate in ticks of the XYZ display
-refreshRate: 1
+## Number of ticks to wait before refreshing the display
+refreshRate: 4
 ## Mode of the display (tip/popup)
 displayMode: "tip"
 
