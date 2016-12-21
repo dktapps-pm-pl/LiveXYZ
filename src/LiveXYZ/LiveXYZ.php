@@ -89,6 +89,7 @@ class LiveXYZ extends PluginBase implements Listener{
 	}
 	
 	public function onPlayerQuit(PlayerQuitEvent $event){
+		$event->getPlayer()->getServer()->getScheduler()->cancelTask($this->tasks[$event->getPlayer()->getName()]->getTaskId());
 		unset($this->tasks[$event->getPlayer()->getName()]);
 	}
 }
