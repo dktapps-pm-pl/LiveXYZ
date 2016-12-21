@@ -34,6 +34,7 @@ class LiveXYZ extends PluginBase implements Listener{
 	/** @var TaskHandler[] */
 	private $tasks = [];
 	private $refreshRate = 1;
+	private $mode = "popup";
 	
 	public function onEnable(){
 		if(!is_dir($this->getDataFolder())){
@@ -49,6 +50,14 @@ class LiveXYZ extends PluginBase implements Listener{
 			$this->getConfig()->set("refreshRate", 1);
 			$this->getConfig()->save();
 			$this->refreshRate = 1;
+		}
+
+		$this->mode = $this->getConfig()->get("displayMode", "popup");
+		if($this->mode !== "tip" and $this->mode !== "popup"){
+			$this->getLogger()->warning("Invalid display mode " . $this->mode . ", resetting to `popup`");
+			$this->getConfig()->set("displayMode", "popup");
+			$this->getConfig()->save();
+			$this->mode = "popup";
 		}
 		
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -67,7 +76,7 @@ class LiveXYZ extends PluginBase implements Listener{
 			
 			if(!isset($this->tasks[$sender->getName()])){
 				/** @var TaskHandler */
-				$this->tasks[$sender->getName()] = $sender->getServer()->getScheduler()->scheduleRepeatingTask(new ShowDisplayTask($this, $sender), $this->refreshRate);
+				$this->tasks[$sender->getName()] = $sender->getServer()->getScheduler()->scheduleRepeatingTask(new ShowDisplayTask($this, $sender, $this->mode), $this->refreshRate);
 				$sender->sendMessage(TextFormat::GREEN . "LiveXYZ is now on!");
 			}else{
 				$sender->getServer()->getScheduler()->cancelTask($this->tasks[$sender->getName()]->getTaskId());

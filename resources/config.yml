@@ -2,5 +2,7 @@
 
 ## Refresh rate in ticks of the XYZ display
 refreshRate: 1
+## Mode of the display (tip/popup)
+displayMode: "tip"
 
 ...

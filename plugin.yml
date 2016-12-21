@@ -2,7 +2,7 @@ name: LiveXYZ
 main: LiveXYZ\LiveXYZ
 author: dktapps
 description: Show real-time player coordinates
-version: 0.5.0-alpha
+version: 0.6.0.1-beta
 api: [2.0.0, 3.0.0-ALPHA1]
 commands:
   xyz:

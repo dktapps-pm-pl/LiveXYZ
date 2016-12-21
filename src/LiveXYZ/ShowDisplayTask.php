@@ -29,18 +29,29 @@ class ShowDisplayTask extends PluginTask{
 
 	/** @var Player */
 	private $player;
+	private $mode;
 	
-	public function __construct(LiveXYZ $plugin, Player $player){
+	public function __construct(LiveXYZ $plugin, Player $player, string $mode = "popup"){
 		parent::__construct($plugin);
 		$this->player = $player;
+		$this->mode = $mode;
 	}
 	
 	public function onRun($currentTick){
 		$location = "Location: " . TextFormat::GREEN . "(" . Utils::getFormattedCoords($this->player->getX(), $this->player->getY(), $this->player->getZ()) . ")" . TextFormat::WHITE . "\n";
 		$world = "World: " . TextFormat::GREEN . $this->player->getLevel()->getName() . TextFormat::WHITE . "\n";
 		$direction = "Direction: " . TextFormat::GREEN . Utils::getCompassDirection($this->player->getYaw()) . " (" . $this->player->getYaw() . ")" . TextFormat::WHITE ."\n";
-		
-		$this->player->sendPopup($location . $world . $direction);		
+
+		switch($this->mode){
+			case "tip":
+				$this->player->sendTip($location . $world . $direction);
+				break;
+			case "popup":
+				$this->player->sendPopup($location . $world . $direction);
+				break;
+			default:
+				break;
+		}
 	}
 
 }
