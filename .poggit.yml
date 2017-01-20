@@ -1,6 +1,6 @@
 --- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/dktapps/LiveXYZ
 branches:
-- api3
+- master
 projects:
   LiveXYZ:
     path: ""
