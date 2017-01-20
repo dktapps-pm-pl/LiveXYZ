@@ -1,11 +1,14 @@
 # LiveXYZ
 A plugin for PocketMine-based servers to show your coordinates real-time as you move.
 
-- Dependency plugins: none
-- Current version: 0.5.0-alpha 
+## NOTE
+This plugin has been tested only on [PocketMine-MP](https://github.com/pmmp/PocketMine-MP) and [Genisys](https://github.com/itxtech/genisys). Compatibility with other distributions can sometimes be found, but I provide no support whatsoever for use with a non-official variant of PocketMine-MP other than the ones stated.
+
+- Current version: 0.6.0.1-beta
+- Latest supported API version: 3.0.0-ALPHA2
 
 ## Installation
-NOTE: This plugin has been tested only on PocketMine and Genisys. Compatibility issues with other distributions of PocketMine will not be catered for.
+
 
 1. Go to the [LiveXYZ Release Page](https://github.com/dktapps/LiveXYZ/releases) and download a PHAR file from there.
 2. Copy the downloaded PHAR to the `plugins` folder in your server folder.
