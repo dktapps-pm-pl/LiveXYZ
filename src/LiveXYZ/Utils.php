@@ -3,7 +3,7 @@
 /*
  *  LiveXYZ - a PocketMine-MP plugin to show your coordinates real-time as you move
  *  Copyright (C) 2016 Dylan K. Taylor
- *  
+ *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -19,13 +19,17 @@
  *
  */
 
+declare(strict_types=1);
+
 namespace LiveXYZ;
 
 class Utils{
 
-	static public function getCompassDirection($deg) {
+	public static function getCompassDirection(float $deg) : string{
 		//https://github.com/Muirfield/pocketmine-plugins/blob/master/GrabBag/src/aliuly/common/ExpandVars.php
 		//Determine bearing in degrees
+		$deg %= 360;
+
 		if(22.5 <= $deg and $deg < 67.5){
 			return "Northwest";
 		}elseif(67.5 <= $deg and $deg < 112.5){
@@ -43,14 +47,13 @@ class Utils{
 		}else{
 			return "West";
 		}
-		return (int) $deg;
 	}
 
-	static public function getFormattedCoords(...$coords){
+	public static function getFormattedCoords(float ...$coords) : string{
 		foreach($coords as &$c){
 			$c = number_format($c, 1, ".", ",");
 		}
 		return implode(", ", $coords);
 	}
-	
+
 }
