@@ -46,7 +46,7 @@ class LiveXYZ extends PluginBase implements Listener{
 			$this->saveDefaultConfig();
 		}
 
-		$this->refreshRate = intval($this->getConfig()->get("refreshRate"));
+		$this->refreshRate = (int) $this->getConfig()->get("refreshRate");
 		if($this->refreshRate < 1){
 			$this->getLogger()->warning("Refresh rate property in config.yml is less than 1. Resetting to 1");
 			$this->getConfig()->set("refreshRate", 1);
@@ -65,7 +65,7 @@ class LiveXYZ extends PluginBase implements Listener{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
 
-	public function onCommand(CommandSender $sender, Command $command, $aliasUsed = "", array $args){
+	public function onCommand(CommandSender $sender, Command $command, string $aliasUsed, array $args) : bool{
 		if($command->getName() === "xyz"){
 			if(!($sender instanceof Player)){
 				$sender->sendMessage(TextFormat::RED . "You can't use this command in the terminal");
@@ -87,6 +87,8 @@ class LiveXYZ extends PluginBase implements Listener{
 
 			return true;
 		}
+
+		return false;
 	}
 
 	private function stopDisplay(string $playerFor){

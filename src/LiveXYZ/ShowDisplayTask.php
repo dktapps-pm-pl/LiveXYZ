@@ -39,7 +39,7 @@ class ShowDisplayTask extends PluginTask{
 		$this->mode = $mode;
 	}
 
-	public function onRun($currentTick){
+	public function onRun(int $currentTick){
 		assert(!$this->player->closed);
 		$location = "Location: " . TextFormat::GREEN . "(" . Utils::getFormattedCoords($this->player->getX(), $this->player->getY(), $this->player->getZ()) . ")" . TextFormat::WHITE . "\n";
 		$world = "World: " . TextFormat::GREEN . $this->player->getLevel()->getName() . TextFormat::WHITE . "\n";
