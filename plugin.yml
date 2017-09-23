@@ -3,7 +3,7 @@ main: LiveXYZ\LiveXYZ
 author: dktapps
 description: Show real-time player coordinates
 version: 0.6.0.2-beta
-api: [3.0.0-ALPHA7]
+api: [3.0.0-ALPHA7, 3.0.0-ALPHA8]
 commands:
   xyz:
     description: Show your coordinates real-time as you move
