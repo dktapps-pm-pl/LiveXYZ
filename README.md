@@ -1,11 +1,11 @@
 # LiveXYZ
-A plugin for PocketMine-based servers to show your coordinates real-time as you move.
+A plugin for PocketMine-MP to show your coordinates real-time as you move.
 
 ## NOTE
-This plugin has been tested only on [PocketMine-MP](https://github.com/pmmp/PocketMine-MP) and [Genisys](https://github.com/itxtech/genisys). Compatibility with other distributions can sometimes be found, but I provide no support whatsoever for use with a non-official variant of PocketMine-MP other than the ones stated.
+This plugin has been tested only on [PocketMine-MP](https://github.com/pmmp/PocketMine-MP). Compatibility with third party modified versions can sometimes be found, but I provide no support whatsoever for use with a non-official variant of PocketMine-MP.
 
-- Current version: 0.6.0.1-beta
-- Latest supported API version: 3.0.0-ALPHA2
+- Current version: 0.6.0.3-beta
+- Latest supported API version: 3.0.0-ALPHA7, 3.0.0ALPHA8 @ https://github.com/pmmp/PocketMine-MP/commit/5190d9c1e28411e8de8bf77d769155b706d258d4
 
 ## Installation
 
@@ -26,7 +26,7 @@ This plugin has been tested only on [PocketMine-MP](https://github.com/pmmp/Pock
 ### Copyright and licensing information
 ```
 LiveXYZ - a PocketMine-MP plugin to show your coordinates real-time as you move
-Copyright (C) 2016 Dylan K. Taylor
+Copyright (C) 2016, 2017 Dylan K. Taylor
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
