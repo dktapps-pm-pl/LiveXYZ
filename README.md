@@ -5,7 +5,7 @@ A plugin for PocketMine-MP to show your coordinates real-time as you move.
 This plugin has been tested only on [PocketMine-MP](https://github.com/pmmp/PocketMine-MP). Compatibility with third party modified versions can sometimes be found, but I provide no support whatsoever for use with a non-official variant of PocketMine-MP.
 
 - Current version: 0.6.0.3-beta
-- Latest supported API version: 3.0.0-ALPHA7, 3.0.0ALPHA8 @ https://github.com/pmmp/PocketMine-MP/commit/5190d9c1e28411e8de8bf77d769155b706d258d4
+- Latest supported API version: 3.0.0-ALPHA7, 3.0.0-ALPHA8 @ https://github.com/pmmp/PocketMine-MP/commit/5190d9c1e28411e8de8bf77d769155b706d258d4
 
 ## Installation
 
