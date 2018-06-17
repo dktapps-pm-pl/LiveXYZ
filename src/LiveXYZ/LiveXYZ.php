@@ -23,11 +23,11 @@ declare(strict_types=1);
 
 namespace LiveXYZ;
 
-use pocketmine\Player;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerQuitEvent;
+use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\TaskHandler;
 use pocketmine\utils\TextFormat;
@@ -69,10 +69,12 @@ class LiveXYZ extends PluginBase implements Listener{
 		if($command->getName() === "xyz"){
 			if(!($sender instanceof Player)){
 				$sender->sendMessage(TextFormat::RED . "You can't use this command in the terminal");
+
 				return true;
 			}
 			if(!$sender->hasPermission("livexyz")){
 				$sender->sendMessage(TextFormat::RED . "You are not permitted to use this command");
+
 				return true;
 			}
 

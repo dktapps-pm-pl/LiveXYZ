@@ -53,6 +53,7 @@ class Utils{
 		foreach($coords as &$c){
 			$c = number_format($c, 1, ".", ",");
 		}
+
 		return implode(", ", $coords);
 	}
 
