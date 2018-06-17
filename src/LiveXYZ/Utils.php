@@ -2,7 +2,7 @@
 
 /*
  *  LiveXYZ - a PocketMine-MP plugin to show your coordinates real-time as you move
- *  Copyright (C) 2016 Dylan K. Taylor
+ *  Copyright (C) 2016-2018 Dylan K. Taylor
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
