@@ -65,6 +65,12 @@ class LiveXYZ extends PluginBase implements Listener{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
 
+	public function onDisable(){
+		//this doesn't get cleared on plugin disable, because plugins are not removed from the PluginManager unless
+		//a reload took place. However, tasks ARE cancelled on plugin disable.
+		$this->tasks = [];
+	}
+
 	public function onCommand(CommandSender $sender, Command $command, string $aliasUsed, array $args) : bool{
 		if($command->getName() === "xyz"){
 			if(!($sender instanceof Player)){
