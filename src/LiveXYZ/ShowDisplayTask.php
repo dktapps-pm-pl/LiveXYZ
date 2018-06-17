@@ -24,17 +24,15 @@ declare(strict_types=1);
 namespace LiveXYZ;
 
 use pocketmine\Player;
-use pocketmine\scheduler\PluginTask;
+use pocketmine\scheduler\Task;
 use pocketmine\utils\TextFormat;
 
-class ShowDisplayTask extends PluginTask{
-
+class ShowDisplayTask extends Task{
 	/** @var Player */
 	private $player;
 	private $mode;
 
-	public function __construct(LiveXYZ $plugin, Player $player, string $mode = "popup"){
-		parent::__construct($plugin);
+	public function __construct(Player $player, string $mode = "popup"){
 		$this->player = $player;
 		$this->mode = $mode;
 	}

@@ -78,7 +78,7 @@ class LiveXYZ extends PluginBase implements Listener{
 
 			if(!isset($this->tasks[$sender->getName()])){
 				/** @var TaskHandler */
-				$this->tasks[$sender->getName()] = $sender->getServer()->getScheduler()->scheduleRepeatingTask(new ShowDisplayTask($this, $sender, $this->mode), $this->refreshRate);
+				$this->tasks[$sender->getName()] = $this->getScheduler()->scheduleRepeatingTask(new ShowDisplayTask($sender, $this->mode), $this->refreshRate);
 				$sender->sendMessage(TextFormat::GREEN . "LiveXYZ is now on!");
 			}else{
 				$this->stopDisplay($sender->getName());
@@ -93,7 +93,7 @@ class LiveXYZ extends PluginBase implements Listener{
 
 	private function stopDisplay(string $playerFor){
 		if(isset($this->tasks[$playerFor])){
-			$this->getServer()->getScheduler()->cancelTask($this->tasks[$playerFor]->getTaskId());
+			$this->getScheduler()->cancelTask($this->tasks[$playerFor]->getTaskId());
 			unset($this->tasks[$playerFor]);
 		}
 	}
