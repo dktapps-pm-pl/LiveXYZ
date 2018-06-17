@@ -37,7 +37,7 @@ class ShowDisplayTask extends Task{
 		$this->mode = $mode;
 	}
 
-	public function onRun(int $currentTick){
+	public function onRun(int $currentTick) : void{
 		assert(!$this->player->isClosed());
 		$location = "Location: " . TextFormat::GREEN . "(" . Utils::getFormattedCoords($this->player->getX(), $this->player->getY(), $this->player->getZ()) . ")" . TextFormat::WHITE . "\n";
 		$world = "World: " . TextFormat::GREEN . $this->player->getLevel()->getName() . TextFormat::WHITE . "\n";

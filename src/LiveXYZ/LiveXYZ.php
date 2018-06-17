@@ -38,7 +38,7 @@ class LiveXYZ extends PluginBase implements Listener{
 	private $refreshRate = 1;
 	private $mode = "popup";
 
-	public function onEnable(){
+	public function onEnable() : void{
 		if(!is_dir($this->getDataFolder())){
 			@mkdir($this->getDataFolder());
 		}
@@ -65,7 +65,7 @@ class LiveXYZ extends PluginBase implements Listener{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
 
-	public function onDisable(){
+	public function onDisable() : void{
 		//this doesn't get cleared on plugin disable, because plugins are not removed from the PluginManager unless
 		//a reload took place. However, tasks ARE cancelled on plugin disable.
 		$this->tasks = [];
@@ -99,14 +99,14 @@ class LiveXYZ extends PluginBase implements Listener{
 		return false;
 	}
 
-	private function stopDisplay(string $playerFor){
+	private function stopDisplay(string $playerFor) : void{
 		if(isset($this->tasks[$playerFor])){
 			$this->getScheduler()->cancelTask($this->tasks[$playerFor]->getTaskId());
 			unset($this->tasks[$playerFor]);
 		}
 	}
 
-	public function onPlayerQuit(PlayerQuitEvent $event){
+	public function onPlayerQuit(PlayerQuitEvent $event) : void{
 		$this->stopDisplay($event->getPlayer()->getName());
 	}
 }
