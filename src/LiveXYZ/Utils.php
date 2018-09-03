@@ -29,6 +29,9 @@ class Utils{
 		//https://github.com/Muirfield/pocketmine-plugins/blob/master/GrabBag/src/aliuly/common/ExpandVars.php
 		//Determine bearing in degrees
 		$deg %= 360;
+		if($deg < 0){
+			$deg += 360;
+		}
 
 		if(22.5 <= $deg and $deg < 67.5){
 			return "Northwest";
