@@ -72,11 +72,6 @@ class LiveXYZ extends PluginBase implements Listener{
 
 				return true;
 			}
-			if(!$sender->hasPermission("livexyz")){
-				$sender->sendMessage(TextFormat::RED . "You are not permitted to use this command");
-
-				return true;
-			}
 
 			if(!isset($this->tasks[$sender->getName()])){
 				/** @var TaskHandler */
