@@ -38,14 +38,8 @@ class LiveXYZ extends PluginBase implements Listener{
 	private $refreshRate = 1;
 	private $mode = "popup";
 
-	public function onEnable() : void{
-		if(!is_dir($this->getDataFolder())){
-			@mkdir($this->getDataFolder());
-		}
-		if(!file_exists($this->getDataFolder() . "config.yml")){
-			$this->saveDefaultConfig();
-		}
 
+	public function onEnable() : void{
 		$this->refreshRate = (int) $this->getConfig()->get("refreshRate");
 		if($this->refreshRate < 1){
 			$this->getLogger()->warning("Refresh rate property in config.yml is less than 1. Resetting to 1");
