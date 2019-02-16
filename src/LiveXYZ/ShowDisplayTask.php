@@ -43,7 +43,7 @@ class ShowDisplayTask extends Task{
 	public function onRun(int $currentTick) : void{
 		assert(!$this->player->isClosed());
 		$location = "Location: " . TextFormat::GREEN . "(" . Utils::getFormattedCoords($this->precision, $this->player->getX(), $this->player->getY(), $this->player->getZ()) . ")" . TextFormat::WHITE . "\n";
-		$world = "World: " . TextFormat::GREEN . $this->player->getLevel()->getName() . TextFormat::WHITE . "\n";
+		$world = "World: " . TextFormat::GREEN . $this->player->getLevel()->getDisplayName() . TextFormat::WHITE . "\n";
 		$direction = "Direction: " . TextFormat::GREEN . Utils::getCompassDirection($this->player->getYaw() - 90) . " (" . round($this->player->getYaw(), $this->precision) . ")" . TextFormat::WHITE . "\n";
 
 		switch($this->mode){
