@@ -52,9 +52,9 @@ class Utils{
 		}
 	}
 
-	public static function getFormattedCoords(float ...$coords) : string{
+	public static function getFormattedCoords(int $precision, float ...$coords) : string{
 		foreach($coords as &$c){
-			$c = number_format($c, 1, ".", ",");
+			$c = number_format($c, $precision, ".", ",");
 		}
 
 		return implode(", ", $coords);

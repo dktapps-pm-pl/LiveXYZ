@@ -4,5 +4,7 @@
 refreshRate: 4
 ## Mode of the display (tip/popup)
 displayMode: "tip"
+## Number of decimal places to show for coordinates (default 1)
+precision: 1
 
 ...

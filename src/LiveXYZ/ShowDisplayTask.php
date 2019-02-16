@@ -31,17 +31,20 @@ class ShowDisplayTask extends Task{
 	/** @var Player */
 	private $player;
 	private $mode;
+	/** @var int */
+	private $precision;
 
-	public function __construct(Player $player, string $mode = "popup"){
+	public function __construct(Player $player, string $mode = "popup", int $precision = 1){
 		$this->player = $player;
 		$this->mode = $mode;
+		$this->precision = $precision;
 	}
 
 	public function onRun(int $currentTick) : void{
 		assert(!$this->player->isClosed());
-		$location = "Location: " . TextFormat::GREEN . "(" . Utils::getFormattedCoords($this->player->getX(), $this->player->getY(), $this->player->getZ()) . ")" . TextFormat::WHITE . "\n";
+		$location = "Location: " . TextFormat::GREEN . "(" . Utils::getFormattedCoords($this->precision, $this->player->getX(), $this->player->getY(), $this->player->getZ()) . ")" . TextFormat::WHITE . "\n";
 		$world = "World: " . TextFormat::GREEN . $this->player->getLevel()->getName() . TextFormat::WHITE . "\n";
-		$direction = "Direction: " . TextFormat::GREEN . Utils::getCompassDirection($this->player->getYaw() - 90) . " (" . $this->player->getYaw() . ")" . TextFormat::WHITE . "\n";
+		$direction = "Direction: " . TextFormat::GREEN . Utils::getCompassDirection($this->player->getYaw() - 90) . " (" . round($this->player->getYaw(), $this->precision) . ")" . TextFormat::WHITE . "\n";
 
 		switch($this->mode){
 			case "tip":

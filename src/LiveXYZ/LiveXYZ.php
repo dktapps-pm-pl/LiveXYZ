@@ -38,6 +38,8 @@ class LiveXYZ extends PluginBase implements Listener{
 	private $refreshRate = 1;
 	private $mode = "popup";
 
+	/** @var int */
+	private $precision = 1;
 
 	public function onEnable() : void{
 		$this->refreshRate = (int) $this->getConfig()->get("refreshRate");
@@ -54,6 +56,13 @@ class LiveXYZ extends PluginBase implements Listener{
 			$this->getConfig()->set("displayMode", "popup");
 			$this->getConfig()->save();
 			$this->mode = "popup";
+		}
+		$this->precision = (int) $this->getConfig()->get("precision");
+		if($this->precision < 0){
+			$this->getLogger()->warning("Precision property in config.yml is less than 0, using default");
+			$this->getConfig()->set("precision", 1);
+			$this->getConfig()->save();
+			$this->precision = 1;
 		}
 
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -75,7 +84,7 @@ class LiveXYZ extends PluginBase implements Listener{
 
 			if(!isset($this->tasks[$sender->getName()])){
 				/** @var TaskHandler */
-				$this->tasks[$sender->getName()] = $this->getScheduler()->scheduleRepeatingTask(new ShowDisplayTask($sender, $this->mode), $this->refreshRate);
+				$this->tasks[$sender->getName()] = $this->getScheduler()->scheduleRepeatingTask(new ShowDisplayTask($sender, $this->mode, $this->precision), $this->refreshRate);
 				$sender->sendMessage(TextFormat::GREEN . "LiveXYZ is now on!");
 			}else{
 				$this->stopDisplay($sender->getName());
