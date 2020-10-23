@@ -35,7 +35,9 @@ use pocketmine\utils\TextFormat;
 class LiveXYZ extends PluginBase implements Listener{
 	/** @var TaskHandler[] */
 	private $tasks = [];
+	/** @var int */
 	private $refreshRate = 1;
+	/** @var string */
 	private $mode = "popup";
 
 	/** @var int */
