@@ -30,6 +30,7 @@ use pocketmine\utils\TextFormat;
 class ShowDisplayTask extends Task{
 	/** @var Player */
 	private $player;
+	/** @var string */
 	private $mode;
 	/** @var int */
 	private $precision;
