@@ -101,7 +101,7 @@ class LiveXYZ extends PluginBase implements Listener{
 
 	private function stopDisplay(string $playerFor) : void{
 		if(isset($this->tasks[$playerFor])){
-			$this->getScheduler()->cancelTask($this->tasks[$playerFor]->getTaskId());
+			$this->tasks[$playerFor]->cancel();
 			unset($this->tasks[$playerFor]);
 		}
 	}
