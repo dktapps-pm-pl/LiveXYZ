@@ -85,7 +85,6 @@ class LiveXYZ extends PluginBase implements Listener{
 			}
 
 			if(!isset($this->tasks[$sender->getName()])){
-				/** @var TaskHandler */
 				$this->tasks[$sender->getName()] = $this->getScheduler()->scheduleRepeatingTask(new ShowDisplayTask($sender, $this->mode, $this->precision), $this->refreshRate);
 				$sender->sendMessage(TextFormat::GREEN . "LiveXYZ is now on!");
 			}else{
