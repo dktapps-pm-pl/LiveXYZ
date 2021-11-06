@@ -1,5 +1,6 @@
 name: LiveXYZ
 main: LiveXYZ\LiveXYZ
+src-namespace-prefix: LiveXYZ
 author: dktapps
 description: Show real-time player coordinates
 version: 0.7.1
