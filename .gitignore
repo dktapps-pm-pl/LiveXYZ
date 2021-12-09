@@ -1,2 +1,5 @@
 config.yml
 .idea/
+
+/phpstan/composer.lock
+/phpstan/vendor
