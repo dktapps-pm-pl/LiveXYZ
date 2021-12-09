@@ -7,7 +7,7 @@ This plugin has been tested only on [PocketMine-MP](https://github.com/pmmp/Pock
 ## Installation
 
 
-1. Go to the [LiveXYZ Release Page](https://github.com/dktapps/LiveXYZ/releases) and download a PHAR file from there.
+1. Go to the [LiveXYZ Release Page](https://poggit.pmmp.io/p/LiveXYZ) and download a PHAR file from there.
 2. Copy the downloaded PHAR to the `plugins` folder in your server folder.
 3. If you're making a fresh installation, you can simply reload the server. If you're updating the plugin, you'll need to shutdown and restart the server for changes to be detected.
 
