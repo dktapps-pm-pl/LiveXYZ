@@ -21,7 +21,7 @@
 
 declare(strict_types=1);
 
-namespace LiveXYZ;
+namespace dktapps\LiveXYZ;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
