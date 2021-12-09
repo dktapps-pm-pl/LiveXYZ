@@ -23,7 +23,10 @@ declare(strict_types=1);
 
 namespace dktapps\LiveXYZ;
 
+use function array_map;
 use function fmod;
+use function implode;
+use function number_format;
 
 class Utils{
 
@@ -53,11 +56,6 @@ class Utils{
 	}
 
 	public static function getFormattedCoords(int $precision, float ...$coords) : string{
-		foreach($coords as &$c){
-			$c = number_format($c, $precision, ".", ",");
-		}
-
-		return implode(", ", $coords);
+		return implode(", ", array_map(fn(float $c) => number_format($c, $precision), $coords));
 	}
-
 }
