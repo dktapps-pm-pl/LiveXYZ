@@ -46,7 +46,7 @@ class ShowDisplayTask extends Task{
 		$ploc = $this->player->getLocation();
 		$location = "Location: " . TextFormat::GREEN . "(" . Utils::getFormattedCoords($this->precision, $ploc->getX(), $ploc->getY(), $ploc->getZ()) . ")" . TextFormat::WHITE . "\n";
 		$world = "World: " . TextFormat::GREEN . $this->player->getWorld()->getDisplayName() . TextFormat::WHITE . "\n";
-		$direction = "Direction: " . TextFormat::GREEN . Utils::getCompassDirection($ploc->getYaw() - 90) . " (" . round($ploc->getYaw(), $this->precision) . ")" . TextFormat::WHITE . "\n";
+		$direction = "Direction: " . TextFormat::GREEN . Utils::getCompassDirection($ploc->getYaw()) . " (" . round($ploc->getYaw(), $this->precision) . ")" . TextFormat::WHITE . "\n";
 
 		switch($this->mode){
 			case "tip":
