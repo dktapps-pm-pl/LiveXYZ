@@ -51,7 +51,7 @@ class Utils{
 		}elseif(292.5 <= $deg and $deg < 337.5){
 			return "Southeast";
 		}else{
-			return "East";
+			return "South";
 		}
 	}
 
