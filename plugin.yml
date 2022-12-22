@@ -3,7 +3,7 @@ main: dktapps\LiveXYZ\LiveXYZ
 src-namespace-prefix: dktapps\LiveXYZ
 author: dktapps
 description: Show real-time player coordinates
-version: 1.0.0
+version: 1.0.1
 api: [4.0.0]
 commands:
   xyz:
